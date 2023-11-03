@@ -28,7 +28,10 @@ diamonds <- diamonds %>% rename(
 
 ```{r}
 # Do some preliminary investigations & cleaning
-
+summary(diamonds)
+diamonds %>% count(color)
+diamonds %>% count(cut)
+diamonds %>% count(clarity)
 
 
 
@@ -43,22 +46,45 @@ diamonds <- diamonds %>%
   mutate(table_mm = table_pct * width_mm / 100)
 
 # Overall table_mm arithmetic mean?
-
-
-
-
-
+diamonds %>% 
+  summarize(table_mm_avg = mean(table_mm))
 
 # table_mm arithmetic mean within each clarity category
+diamonds %>% 
+  filter(clarity == "I1") %>%
+  summarize(avg_table_I1 = mean(table_mm))
 
+diamonds %>% 
+  filter(clarity == "SI1") %>%
+  summarize(avg_table_SI1 = mean(table_mm))
 
+diamonds %>% 
+  filter(clarity == "SI2") %>%
+  summarize(avg_table_SI2 = mean(table_mm))
 
+diamonds %>% 
+  filter(clarity == "VS1") %>%
+  summarize(avg_table_VS1 = mean(table_mm))
 
+diamonds %>% 
+  filter(clarity == "VS2") %>%
+  summarize(avg_table_VS2 = mean(table_mm))
 
+diamonds %>% 
+  filter(clarity == "VVS1") %>%
+  summarize(avg_table_VVS1 = mean(table_mm))
+
+diamonds %>% 
+  filter(clarity == "VVS2") %>%
+  summarize(avg_table_VVS2 = mean(table_mm))
+
+diamonds %>% 
+  filter(clarity == "IF") %>%
+  summarize(avg_table_IF = mean(table_mm))
 
 ```
 
-_Add your comment here_
+Better quality => greater table length
 
 ## Exercise 3
 
